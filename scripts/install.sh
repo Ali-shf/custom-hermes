@@ -698,7 +698,16 @@ attempt_install_git() {
         linux)
             local sudo_cmd=""
             if [ "$(id -u 2>/dev/null || echo 1000)" -ne 0 ]; then
-                command -v sudo >/dev/null 2>&1 && sudo_cmd="sudo"
+                # Only use sudo if passwordless (sudo -n); otherwise the bare
+                # sudo would hang waiting for a password in non-interactive mode.
+                if command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
+                    sudo_cmd="sudo"
+                elif [ "$NON_INTERACTIVE" = true ]; then
+                    log_warn "Non-interactive mode and no passwordless sudo — cannot install git automatically"
+                    return 1
+                elif command -v sudo >/dev/null 2>&1; then
+                    sudo_cmd="sudo"
+                fi
             fi
             case "$DISTRO" in
                 ubuntu|debian)
