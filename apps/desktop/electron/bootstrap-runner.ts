@@ -582,7 +582,9 @@ function spawnBash(scriptPath, args, { emit, stageName, abortSignal, rutileaHome
       stdio: ['ignore', 'pipe', 'pipe'],
       env: {
         ...process.env,
-        RUTILEA_HOME: rutileaHome || process.env.RUTILEA_HOME || ''
+        RUTILEA_HOME: rutileaHome || process.env.RUTILEA_HOME || '',
+        GIT_TERMINAL_PROMPT: '0',
+        GCM_INTERACTIVE: 'never'
       }
     })
 

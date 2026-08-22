@@ -1174,6 +1174,12 @@ install_system_packages() {
                         return 0
                     fi
                 fi
+            elif [ "$NON_INTERACTIVE" = true ]; then
+                # Desktop bootstrap (--non-interactive): never try sudo, even
+                # if /dev/tty is available. sudo would block waiting for a
+                # password that nobody can type, hanging the bootstrap.
+                log_warn "Non-interactive mode — skipping optional system packages (${pkgs[*]})"
+                log_info "Install manually after setup completes: sudo $install_cmd"
             elif (: </dev/tty) 2>/dev/null; then
                 # Non-interactive (e.g. curl | bash) but a terminal is available.
                 # Read the prompt from /dev/tty (same approach the setup wizard uses).
