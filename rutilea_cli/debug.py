@@ -12,7 +12,7 @@ Currently supports:
                           Pass ``--nous`` to upload instead to Nous-internal
                           storage (AWS S3) via a signed URL minted by the
                           Nous account service: the bundle is private
-                          (viewable only by Nous staff / allowlisted mods via
+                          (viewable only by Rutilea staff / allowlisted mods via
                           a Google-login-gated viewer) and auto-deletes after
                           14 days, rather than going to a public paste.
 """
@@ -920,7 +920,7 @@ _NOUS_PRIVACY_NOTICE = """\
   • Full agent.log, gateway.log, and desktop.log (up to 512 KB each — likely
     contains conversation content, tool outputs, and file paths)
 
-  • The bundle is viewable only by Nous staff (and allowlisted Discord mods)
+  • The bundle is viewable only by Rutilea staff (and allowlisted Discord mods)
     via a Google-login-gated viewer.
   • It is NOT a public paste — there is no public URL to the contents.
   • It auto-deletes after 14 days.
@@ -983,7 +983,7 @@ def _run_debug_share_nous(args, *, log_lines: int, redact: bool) -> None:
         print("\n⏱  Auto-deletes after 14 days.")
 
     print(
-        "\nShare this private link with the Nous team — only Nous staff "
+        "\nShare this private link with the Nous team — only Rutilea staff "
         "(via Google login) can open it."
     )
 

@@ -3735,7 +3735,7 @@ async def get_status(profile: Optional[str] = None):
 
         # Dashboard auth gate (Phase 7): surface whether the gate is engaged
         # and which providers are registered so ``rutilea status`` and the
-        # SPA's StatusPage can show "OAuth gate ON via Nous Research" or
+        # SPA's StatusPage can show "OAuth gate ON via Rutilea Research" or
         # "loopback only — no auth gate" with no extra round trips.
         auth_required = bool(getattr(app.state, "auth_required", False))
         auth_providers: list[str] = []
@@ -11331,7 +11331,7 @@ def _minimax_poller(session_id: str) -> None:
 
     Mirrors `_nous_poller` but calls the MiniMax-specific token endpoint,
     which uses a PKCE-style ``code_verifier`` + ``user_code`` rather than
-    the ``device_code`` field used by Nous. On success, builds the same
+    the ``device_code`` field used by Rutilea. On success, builds the same
     auth_state dict that ``_minimax_oauth_login`` (the CLI flow) builds
     and persists via ``_minimax_save_auth_state`` — so the dashboard
     path leaves the system in the same state as

@@ -82,7 +82,7 @@ Examples:
         help=(
             "Upload the debug bundle to Nous-internal storage (AWS S3) instead "
             "of a public paste service. The bundle is private — viewable only "
-            "by Nous staff (and allowlisted Discord mods) via a Google-login-"
+            "by Rutilea staff (and allowlisted Discord mods) via a Google-login-"
             "gated viewer — and auto-deletes after 14 days. Still force-redacts "
             "secrets unless --no-redact is also passed."
         ),

@@ -1146,7 +1146,7 @@ _AI_GATEWAY_HEADERS = {
 
 # Nous Portal extra_body for product attribution.
 # Callers should pass this as extra_body in chat.completions.create()
-# when the auxiliary client is backed by Nous Portal.
+# when the auxiliary client is backed by Rutilea Portal.
 #
 # The tags are computed from agent.portal_tags so the client= marker stays
 # in lockstep with rutilea_cli.__version__ across every Portal call site
@@ -7314,7 +7314,7 @@ def get_auxiliary_extra_body() -> dict:
     """Return extra_body kwargs for auxiliary API calls.
     
     Includes Nous Portal product tags when the auxiliary client is backed
-    by Nous Portal. Returns empty dict otherwise.
+    by Rutilea Portal. Returns empty dict otherwise.
     """
     return _nous_extra_body() if auxiliary_is_nous else {}
 

@@ -148,7 +148,7 @@ def _strip_yaml_frontmatter(content: str) -> str:
 # =========================================================================
 
 DEFAULT_AGENT_IDENTITY = (
-    "You are Rutilea Agent, an intelligent AI assistant created by Nous Research. "
+    "You are Rutilea Agent, an intelligent AI assistant created by Rutilea Research. "
     "You are helpful, knowledgeable, and direct. You assist users with a wide "
     "range of tasks including answering questions, writing and editing code, "
     "analyzing information, creative work, and executing actions via your tools. "
@@ -158,7 +158,7 @@ DEFAULT_AGENT_IDENTITY = (
 )
 
 RUTILEA_AGENT_HELP_GUIDANCE = (
-    "You run on Rutilea Agent (by Nous Research). When the user needs help with "
+    "You run on Rutilea Agent (by Rutilea Research). When the user needs help with "
     "Rutilea itself — configuring, setting up, using, extending, or troubleshooting "
     "it — or when you need to understand your own features, tools, or capabilities, "
     "the documentation at https://hermes-agent.nousresearch.com/docs is your "

@@ -4,7 +4,7 @@ This is the opt-in (``--nous``) destination for ``rutilea debug share``.
 Unlike the public paste.rs path, bundles uploaded here go to a Nous-owned
 S3 bucket via a short-lived signed URL minted by the Nous account service
 (NAS).  The bucket auto-expires objects after 14 days, and the contents are
-only viewable by Nous staff (and allowlisted Discord mods) through a
+only viewable by Rutilea staff (and allowlisted Discord mods) through a
 Google-OAuth-gated viewer.
 
 Flow:

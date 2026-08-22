@@ -2721,7 +2721,7 @@ def init_agent(
             _rutilea_warn = _check_rutilea_model_warning(agent.model or "")
             if _rutilea_warn:
                 _user_msg = (
-                    "⚠ Nous Research Rutilea 3 & 4 models are NOT agentic — they "
+                    "⚠ Rutilea Research Rutilea 3 & 4 models are NOT agentic — they "
                     "lack reliable tool-calling for agent workflows (delegation, "
                     "cron, proactive tools). Consider an agentic model instead "
                     "(Claude, GPT, Gemini, Qwen-Coder, etc.)."

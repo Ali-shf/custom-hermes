@@ -334,7 +334,7 @@ TOOL_CATEGORIES = {
                 "tts_provider": "edge",
             },
             {
-                "name": "Nous Subscription",
+                "name": "Rutilea Subscription",
                 "badge": "subscription",
                 "tag": "Managed OpenAI TTS billed to your subscription",
                 "env_vars": [],
@@ -427,7 +427,7 @@ TOOL_CATEGORIES = {
                 "post_setup": "faster_whisper",
             },
             {
-                "name": "Nous Subscription",
+                "name": "Rutilea Subscription",
                 "badge": "subscription",
                 "tag": "Managed OpenAI transcription billed to your subscription",
                 "env_vars": [],
@@ -493,14 +493,14 @@ TOOL_CATEGORIES = {
         # plugins.web.<vendor>.provider via _plugin_web_search_providers()
         # in _visible_providers(). Only non-provider UX setup-flow rows
         # for the firecrawl backend are listed here:
-        #   - "Nous Subscription" — managed Firecrawl billed via Nous
+        #   - "Rutilea Subscription" — managed Firecrawl billed via Nous
         #     subscription (requires_nous_auth + override_env_vars).
         #   - "Firecrawl Self-Hosted" — points firecrawl at a private
         #     Docker instance via FIRECRAWL_API_URL only.
         # See PR #25182 for the migration rationale.
         "providers": [
             {
-                "name": "Nous Subscription",
+                "name": "Rutilea Subscription",
                 "badge": "subscription",
                 "tag": "Managed Firecrawl billed to your subscription",
                 "web_backend": "firecrawl",
@@ -528,14 +528,14 @@ TOOL_CATEGORIES = {
         # ``plugins.image_gen.<vendor>`` package via
         # ``_plugin_image_gen_providers()`` in ``_visible_providers``.
         # Only non-provider UX setup-flow rows remain here:
-        #   - "Nous Subscription" — managed FAL billed via the Nous
+        #   - "Rutilea Subscription" — managed FAL billed via the Nous
         #     subscription (requires_nous_auth + override_env_vars).
         #     Uses the fal plugin as the underlying backend but has a
         #     distinct setup UX.
         # Mirrors the shape browser/video_gen ship today.
         "providers": [
             {
-                "name": "Nous Subscription",
+                "name": "Rutilea Subscription",
                 "badge": "subscription",
                 "tag": "Managed FAL image generation billed to your subscription",
                 "env_vars": [],
@@ -549,13 +549,13 @@ TOOL_CATEGORIES = {
     "video_gen": {
         "name": "Video Generation",
         "icon": "🎬",
-        # "Nous Subscription" row mirrors the image_gen pattern — managed
-        # FAL video generation billed via the Nous Portal.  Plugin-backed
+        # "Rutilea Subscription" row mirrors the image_gen pattern — managed
+        # FAL video generation billed via the Rutilea Portal.  Plugin-backed
         # provider rows (FAL BYOK, xAI, …) are injected at runtime by
         # ``_plugin_video_gen_providers()`` in ``_visible_providers``.
         "providers": [
             {
-                "name": "Nous Subscription",
+                "name": "Rutilea Subscription",
                 "badge": "subscription",
                 "tag": "Managed FAL video generation billed to your subscription",
                 "env_vars": [],
@@ -563,7 +563,7 @@ TOOL_CATEGORIES = {
                 "managed_nous_feature": "video_gen",
                 "override_env_vars": ["FAL_KEY"],
                 # The underlying plugin backend — when the user picks
-                # "Nous Subscription" we set video_gen.provider = "fal"
+                # "Rutilea Subscription" we set video_gen.provider = "fal"
                 # and video_gen.use_gateway = True so the FAL plugin
                 # routes through the managed queue gateway.
                 "video_gen_plugin_name": "fal",
@@ -614,9 +614,9 @@ TOOL_CATEGORIES = {
         # non-provider UX setup-flow rows remain here. "Local Browser" is
         # listed FIRST so it is the default-highlighted (index 0) choice on a
         # fresh install — pressing Enter must land on the free, no-key local
-        # backend, never on the paid Nous Subscription gateway row:
+        # backend, never on the paid Rutilea Subscription gateway row:
         #   - "Local Browser" — non-cloud option, no CloudBrowserProvider.
-        #   - "Nous Subscription (Browser Use cloud)" — managed Browser Use
+        #   - "Rutilea Subscription (Browser Use cloud)" — managed Browser Use
         #     billed via Nous subscription (requires_nous_auth +
         #     override_env_vars). Uses the browser-use plugin as the
         #     underlying backend but has a distinct setup UX.
@@ -633,7 +633,7 @@ TOOL_CATEGORIES = {
                 "post_setup": "agent_browser",
             },
             {
-                "name": "Nous Subscription (Browser Use cloud)",
+                "name": "Rutilea Subscription (Browser Use cloud)",
                 "badge": "subscription",
                 "tag": "Managed Browser Use billed to your subscription",
                 "env_vars": [],
@@ -3093,7 +3093,7 @@ def _plugin_video_gen_providers() -> list[dict]:
 # PR #25182 — this helper is the sole source of truth for the category's
 # provider rows. The hardcoded entries that used to drive the category
 # were deleted in the same PR; only the two non-provider UX rows
-# ("Nous Subscription" managed-gateway entry, "Firecrawl Self-Hosted")
+# ("Rutilea Subscription" managed-gateway entry, "Firecrawl Self-Hosted")
 # remain in TOOL_CATEGORIES because they describe alternative *setup
 # flows* for the firecrawl backend rather than distinct providers.
 def _plugin_web_search_providers() -> list[dict]:
@@ -3177,7 +3177,7 @@ def web_provider_capabilities(backend: str) -> list:
 # for those three in the "Browser Automation" picker. The hardcoded
 # ``TOOL_CATEGORIES["browser"]`` entries that drove the category before
 # were deleted in the same PR; only non-provider UX setup-flow rows remain
-# ("Nous Subscription", "Local Browser", "Camofox") — see the comment block
+# ("Rutilea Subscription", "Local Browser", "Camofox") — see the comment block
 # in ``TOOL_CATEGORIES["browser"]`` for why each one stays hardcoded.
 def _plugin_browser_providers() -> list[dict]:
     """Build picker-row dicts from plugin-registered cloud browser providers.
@@ -3293,7 +3293,7 @@ def _visible_providers(
 
     Nous-managed Tool Gateway rows (``managed_nous_feature``) are always
     shown — even to logged-out / unentitled users — so the picker advertises
-    that the capability exists.  Selecting one drives an inline Nous Portal
+    that the capability exists.  Selecting one drives an inline Rutilea Portal
     login + entitlement check (see ``_configure_provider``); the row only
     *activates* the gateway once paid access is confirmed.
     """
@@ -3334,7 +3334,7 @@ def _visible_providers(
         visible.append(provider)
 
     # Inject plugin-registered image_gen backends (OpenAI today, more
-    # later) so the picker lists them alongside FAL / Nous Subscription.
+    # later) so the picker lists them alongside FAL / Rutilea Subscription.
     if cat.get("name") == "Image Generation":
         visible.extend(_plugin_image_gen_providers())
 
@@ -3346,14 +3346,14 @@ def _visible_providers(
     # Inject plugin-registered web search backends. After PR #25182, this
     # is the SOLE source of provider rows for the Web Search & Extract
     # category — the per-provider hardcoded entries were deleted. The two
-    # remaining hardcoded rows ("Nous Subscription", "Firecrawl
+    # remaining hardcoded rows ("Rutilea Subscription", "Firecrawl
     # Self-Hosted") are non-provider UX setup-flow rows for firecrawl.
     if cat.get("name") == "Web Search & Extract":
         visible.extend(_plugin_web_search_providers())
 
     # Inject plugin-registered cloud browser backends. After PR #25214,
     # Browserbase / Browser Use / Firecrawl are the plugin-supplied rows;
-    # the hardcoded "Nous Subscription" / "Local Browser" / "Camofox" rows
+    # the hardcoded "Rutilea Subscription" / "Local Browser" / "Camofox" rows
     # stay because they're non-provider UX setup flows (subscription auth,
     # local fallback, and the REST-API anti-detection backend respectively).
     if cat.get("name") == "Browser Automation":
@@ -3538,7 +3538,7 @@ def provider_readiness_status(
 
     - ``"ready"``       — usable as-is (keys set / entitled / installed).
     - ``"needs_keys"``  — declares env vars and at least one is unset.
-    - ``"needs_auth"``  — needs a sign-in: Nous Portal login/entitlement for
+    - ``"needs_auth"``  — needs a sign-in: Rutilea Portal login/entitlement for
       managed Tool Gateway rows, or xAI Grok OAuth / XAI_API_KEY for
       ``post_setup: "xai_grok"`` rows.
     - ``"needs_setup"`` — keyless row whose ``post_setup`` install hook has
@@ -3546,7 +3546,7 @@ def provider_readiness_status(
 
     Keyless ≠ usable: this is the server-side truth the GUI "Ready" pill
     renders from (the old client-side heuristic showed Ready for every
-    zero-env-var row, including logged-out Nous Subscription rows).
+    zero-env-var row, including logged-out Rutilea Subscription rows).
 
     ``features`` (a ``NousSubscriptionFeatures``) can be passed to avoid
     re-fetching portal state per row. ``is_active`` is the completed-setup
@@ -3688,7 +3688,7 @@ def _configure_tool_category(
     hidden_nous_message = _hidden_nous_gateway_message(
         cat,
         config,
-        f"the Nous Subscription provider for {name}",
+        f"the Rutilea Subscription provider for {name}",
         force_fresh=force_fresh,
     )
 
@@ -3756,7 +3756,7 @@ def _configure_tool_category(
                 else:
                     configured = " [configured]"
             # Mark Nous-managed entries. Logged-in paid subscribers get the
-            # "included" star; everyone else gets a "via Nous Portal" hint so
+            # "included" star; everyone else gets a "via Rutilea Portal" hint so
             # it's clear selecting the row triggers a Portal login. The rows
             # are always shown now (see _visible_providers) — selecting one
             # drives an inline login + entitlement check.
@@ -3765,7 +3765,7 @@ def _configure_tool_category(
                 if _nous_logged_in:
                     sub_marker = "  ★ Included with your Nous subscription"
                 else:
-                    sub_marker = "  ★ via Nous Portal (login on select)"
+                    sub_marker = "  ★ via Rutilea Portal (login on select)"
             provider_choices.append(f"{p['name']}{badge}{tag}{configured}{sub_marker}")
 
         # Add skip option
@@ -4398,7 +4398,7 @@ def apply_provider_selection(ts_key: str, provider_name: str, config: dict) -> N
     rows the GUI/CLI picker shows via :func:`_visible_providers`) and writes
     the corresponding backend/provider config keys. Unlike
     :func:`_configure_provider`, this does NOT prompt for API keys, run
-    post-setup hooks, gate on Nous Portal auth, or run interactive model
+    post-setup hooks, gate on Rutilea Portal auth, or run interactive model
     pickers — those are handled separately (env endpoints, post-setup
     endpoints, the model picker) in the desktop GUI.
 
@@ -4473,7 +4473,7 @@ def _configure_provider(
             coverage_category=MANAGED_FEATURE_COVERAGE_CATEGORY.get(managed_feature),
         ):
             _print_warning(
-                "  Not enabled — Nous Portal access is required for this backend."
+                "  Not enabled — Rutilea Portal access is required for this backend."
             )
             return
 
@@ -4488,10 +4488,10 @@ def _configure_provider(
         if not features.nous_auth_present or not entitled:
             message = format_nous_portal_entitlement_message(
                 features.account_info,
-                capability=f"{provider.get('name', 'Nous Subscription')}",
+                capability=f"{provider.get('name', 'Rutilea Subscription')}",
             )
             _print_warning(
-                f"  {message or 'Nous Subscription is only available after logging into Nous Portal.'}"
+                f"  {message or 'Rutilea Subscription is only available after logging into Rutilea Portal.'}"
             )
             return
 
@@ -4586,7 +4586,7 @@ def _configure_provider(
             _show_portal_hint = False
 
     if _show_portal_hint:
-        _print_info("  Available through Nous Portal subscription.")
+        _print_info("  Available through Rutilea Portal subscription.")
 
     for var in env_vars:
         existing = get_env_value(var["key"])
@@ -4914,7 +4914,7 @@ def _configure_tool_category_for_reconfig(
     hidden_nous_message = _hidden_nous_gateway_message(
         cat,
         config,
-        f"the Nous Subscription provider for {name}",
+        f"the Rutilea Subscription provider for {name}",
         force_fresh=force_fresh,
     )
 
@@ -4973,7 +4973,7 @@ def _reconfigure_provider(
     env_vars = provider.get("env_vars", [])
     managed_feature = provider.get("managed_nous_feature")
 
-    # Same inline Nous Portal login + entitlement gate as _configure_provider:
+    # Same inline Rutilea Portal login + entitlement gate as _configure_provider:
     # managed Tool Gateway backends only activate with paid Portal access.
     if managed_feature:
         from rutilea_cli.nous_subscription import (
@@ -4986,7 +4986,7 @@ def _reconfigure_provider(
             coverage_category=MANAGED_FEATURE_COVERAGE_CATEGORY.get(managed_feature),
         ):
             _print_warning(
-                "  Not enabled — Nous Portal access is required for this backend."
+                "  Not enabled — Rutilea Portal access is required for this backend."
             )
             return
 
@@ -5000,10 +5000,10 @@ def _reconfigure_provider(
         if not features.nous_auth_present or not entitled:
             message = format_nous_portal_entitlement_message(
                 features.account_info,
-                capability=f"{provider.get('name', 'Nous Subscription')}",
+                capability=f"{provider.get('name', 'Rutilea Subscription')}",
             )
             _print_warning(
-                f"  {message or 'Nous Subscription is only available after logging into Nous Portal.'}"
+                f"  {message or 'Rutilea Subscription is only available after logging into Rutilea Portal.'}"
             )
             return
 
@@ -5087,7 +5087,7 @@ def _reconfigure_provider(
                 img_cfg = config.setdefault("image_gen", {})
                 if isinstance(img_cfg, dict):
                     img_cfg["provider"] = "fal"
-                    # A managed (Nous Subscription) row also carries
+                    # A managed (Rutilea Subscription) row also carries
                     # imagegen_backend="fal" — the model picker runs AFTER
                     # _write_provider_config set use_gateway=True, so an
                     # unconditional False here silently flipped managed
