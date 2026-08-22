@@ -38,8 +38,29 @@ function electronBuilderCli() {
 
 const dist = electronDistDir()
 const args = []
-if (dist && fs.existsSync(distBinary(dist))) {
+// Detect cross-arch builds: when the target arch differs from the host's,
+// do NOT pin electronDist to the local (host-arch) Electron binary — that
+// would package an x64 binary into an arm64 .deb (or vice versa). Instead
+// let electron-builder fetch the correct arch via @electron/get.
+function requestedArch() {
+  const argv = process.argv.slice(2)
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--arm64' || argv[i] === '-a=arm64' || argv[i] === '--arch=arm64') return 'arm64'
+    if (argv[i] === '--x64' || argv[i] === '-a=x64' || argv[i] === '--arch=x64') return 'x64'
+    if (argv[i] === '--ia32' || argv[i] === '-a=ia32' || argv[i] === '--arch=ia32') return 'ia32'
+  }
+  return null
+}
+const targetArch = requestedArch()
+const hostArch = process.arch
+const isCrossArch = targetArch && targetArch !== hostArch
+if (dist && fs.existsSync(distBinary(dist)) && !isCrossArch) {
   args.push(`-c.electronDist=${dist}`)
+} else if (isCrossArch) {
+  console.warn(
+    `[run-electron-builder] cross-arch build (host=${hostArch}, target=${targetArch}); ` +
+      `not pinning electronDist so electron-builder fetches the correct arch via @electron/get.`
+  )
 } else {
   console.warn(
     "[run-electron-builder] no local electron dist; electron-builder will fetch " +
