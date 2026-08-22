@@ -25,8 +25,6 @@ import type {
   DebugShareResponse,
   ElevenLabsVoicesResponse,
   EnvVarInfo,
-  RutileaConfig,
-  RutileaConfigRecord,
   LogsResponse,
   McpCatalogResponse,
   McpServerSummary,
@@ -53,6 +51,8 @@ import type {
   ProfileSetupCommand,
   ProfileSoul,
   ProfilesResponse,
+  RutileaConfig,
+  RutileaConfigRecord,
   SessionInfo,
   SessionMessage,
   SessionMessagesResponse,
@@ -168,8 +168,6 @@ export type {
   ElevenLabsVoicesResponse,
   EnvVarInfo,
   GatewayReadyPayload,
-  RutileaConfig,
-  RutileaConfigRecord,
   LogsResponse,
   McpCatalogEntry,
   McpCatalogResponse,
@@ -204,6 +202,8 @@ export type {
   ProjectInfo,
   ProjectsPayload,
   RpcEvent,
+  RutileaConfig,
+  RutileaConfigRecord,
   SessionCreateResponse,
   SessionInfo,
   SessionMessage,
@@ -2106,13 +2106,15 @@ export function installMcpCatalogEntry(
   env: Record<string, string> = {},
   profile?: null | string
 ): Promise<{ ok: boolean; name?: string; pid?: number; action?: string; background?: boolean }> {
-  return window.rutileaDesktop.api<{ ok: boolean; name?: string; pid?: number; action?: string; background?: boolean }>({
-    ...profileScoped(profile),
-    path: '/api/mcp/catalog/install',
-    method: 'POST',
-    body: { name, env, enable: true },
-    timeoutMs: 60_000
-  })
+  return window.rutileaDesktop.api<{ ok: boolean; name?: string; pid?: number; action?: string; background?: boolean }>(
+    {
+      ...profileScoped(profile),
+      path: '/api/mcp/catalog/install',
+      method: 'POST',
+      body: { name, env, enable: true },
+      timeoutMs: 60_000
+    }
+  )
 }
 
 // ---------------------------------------------------------------------------

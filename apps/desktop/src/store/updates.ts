@@ -14,9 +14,9 @@ import type {
   DesktopUpdateStatus,
   DesktopVersionInfo
 } from '@/global'
-import { checkRutileaUpdate, getActionStatus, updateRutilea } from '@/rutilea'
 import { translateNow } from '@/i18n'
 import { persistString, storedString } from '@/lib/storage'
+import { checkRutileaUpdate, getActionStatus, updateRutilea } from '@/rutilea'
 import { dismissNotification, notify } from '@/store/notifications'
 import { $connection } from '@/store/session'
 import type { BackendUpdateCheckResponse } from '@/types/rutilea'

@@ -2,8 +2,8 @@ import { useStore } from '@nanostores/react'
 
 import type { ModelSelection } from '@/app/shell/model-menu-panel'
 import { ModelPickerDialog } from '@/components/model-picker'
-import type { RutileaGateway } from '@/rutilea'
 import { useStoreSelector } from '@/lib/use-session-slice'
+import type { RutileaGateway } from '@/rutilea'
 import {
   $activeSessionId,
   $currentModel,

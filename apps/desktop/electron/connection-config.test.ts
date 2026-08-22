@@ -888,11 +888,19 @@ test('cookiesHaveSession handles non-arrays', () => {
 })
 
 test('AT_COOKIE_VARIANTS covers all three deploy shapes', () => {
-  assert.deepEqual(AT_COOKIE_VARIANTS, ['__Host-rutilea_session_at', '__Secure-rutilea_session_at', 'rutilea_session_at'])
+  assert.deepEqual(AT_COOKIE_VARIANTS, [
+    '__Host-rutilea_session_at',
+    '__Secure-rutilea_session_at',
+    'rutilea_session_at'
+  ])
 })
 
 test('RT_COOKIE_VARIANTS covers all three deploy shapes', () => {
-  assert.deepEqual(RT_COOKIE_VARIANTS, ['__Host-rutilea_session_rt', '__Secure-rutilea_session_rt', 'rutilea_session_rt'])
+  assert.deepEqual(RT_COOKIE_VARIANTS, [
+    '__Host-rutilea_session_rt',
+    '__Secure-rutilea_session_rt',
+    'rutilea_session_rt'
+  ])
 })
 
 // --- cookiesHaveLiveSession (AT or RT — the connectivity check) ---

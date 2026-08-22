@@ -6,9 +6,9 @@ import { useSearchParams } from 'react-router'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { getElevenLabsVoices, getRutileaConfigSchema, saveRutileaConfig } from '@/rutilea'
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
+import { getElevenLabsVoices, getRutileaConfigSchema, saveRutileaConfig } from '@/rutilea'
 import {
   $dataUrlReadMaxMb,
   clampDataUrlReadMaxMb,

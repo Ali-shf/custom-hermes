@@ -34,7 +34,7 @@ import { classifyActiveRuntime } from './active-runtime-state'
 import { stopBackendChild as stopBackendChildImpl, stopBackendTreesForUpdate } from './backend-child'
 import { dashboardFallbackArgs, sourceDeclaresServe } from './backend-command'
 import { createBackendConnectionState } from './backend-connection-state'
-import { buildDesktopBackendEnv, rutileaManagedNodePathEntries, normalizeRutileaHomeRoot } from './backend-env'
+import { buildDesktopBackendEnv, normalizeRutileaHomeRoot, rutileaManagedNodePathEntries } from './backend-env'
 import { isReauthRequiredError, waitForRutileaReady } from './backend-health'
 import { backendCommandMatches, createBackendOwnership, createBackendShutdownCoordinator } from './backend-ownership'
 import {
@@ -342,17 +342,17 @@ import {
 } from './window-state'
 import { hiddenWindowsChildOptions } from './windows-child-options'
 import {
-  buildPathExtCandidates,
-  chooseUpdaterArgs,
-  getVenvSitePackagesEntries,
-  resolveVenvRutileaCommand
-} from './windows-rutilea-path'
-import {
   buildWindowsInteractiveCommand,
   connectWindowsRemote,
   detectRemotePlatform,
   helper
 } from './windows-remote-lifecycle'
+import {
+  buildPathExtCandidates,
+  chooseUpdaterArgs,
+  getVenvSitePackagesEntries,
+  resolveVenvRutileaCommand
+} from './windows-rutilea-path'
 import {
   alreadyHasNoSandbox,
   buildNoSandboxRelaunchArgs,
@@ -3790,7 +3790,9 @@ async function handOffWindowsBootstrapRecovery(reason) {
   // --repair (full venv recreate) and drove reinstall loops. The venv interpreter
   // and the bootstrap-complete marker are present earlier and are better signals.
   const haveRealInstall =
-    fileExists(venvPython) || fileExists(venvRutilea) || fileExists(path.join(updateRoot, '.rutilea-bootstrap-complete'))
+    fileExists(venvPython) ||
+    fileExists(venvRutilea) ||
+    fileExists(path.join(updateRoot, '.rutilea-bootstrap-complete'))
 
   const updaterArgs = chooseUpdaterArgs(haveRealInstall, branch)
 
@@ -4396,7 +4398,8 @@ function createActiveBackend(backendArgs) {
 function resolveRutileaBackend(backendArgs) {
   // 1. Explicit override -- RUTILEA_DESKTOP_RUTILEA_ROOT points at a developer
   //    checkout. Honour it as-is (no bootstrap; the user is driving).
-  const overrideRoot = process.env.RUTILEA_DESKTOP_RUTILEA_ROOT && path.resolve(process.env.RUTILEA_DESKTOP_RUTILEA_ROOT)
+  const overrideRoot =
+    process.env.RUTILEA_DESKTOP_RUTILEA_ROOT && path.resolve(process.env.RUTILEA_DESKTOP_RUTILEA_ROOT)
 
   if (overrideRoot && isRutileaSourceRoot(overrideRoot)) {
     const backend = createPythonBackend(overrideRoot, `Rutilea source at ${overrideRoot}`, backendArgs)

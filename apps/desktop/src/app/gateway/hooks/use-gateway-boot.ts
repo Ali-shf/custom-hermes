@@ -2,10 +2,10 @@ import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@rutilea/shared'
 import { useEffect, useRef } from 'react'
 
 import type { RutileaConnection } from '@/global'
-import { RutileaGateway } from '@/rutilea'
 import { translateNow } from '@/i18n'
 import { desktopDefaultCwd } from '@/lib/desktop-fs'
 import { reconnectBackoffDelayMs } from '@/lib/reconnect-backoff'
+import { RutileaGateway } from '@/rutilea'
 import {
   $desktopBoot,
   applyDesktopBootProgress,

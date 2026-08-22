@@ -21,8 +21,8 @@
  * fenced out until a later page confirms the value we wrote.
  */
 
-import { setSessionPinnedRemote } from '@/rutilea'
 import { onConnectionScopeChange } from '@/lib/connection-scoped'
+import { setSessionPinnedRemote } from '@/rutilea'
 import { $pinnedSessionIds, pinSession, unpinSession } from '@/store/layout'
 import { $sessions, sessionMatchesStoredId, sessionPinId } from '@/store/session'
 

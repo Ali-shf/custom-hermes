@@ -2,8 +2,8 @@ import { type ConnectionState, type GatewayEvent, registryBackendScopeKey, resol
 import { atom } from 'nanostores'
 
 import type { RutileaConnection } from '@/global'
-import { RutileaGateway, setApiRequestConnection } from '@/rutilea'
 import { reconnectBackoffDelayMs } from '@/lib/reconnect-backoff'
+import { RutileaGateway, setApiRequestConnection } from '@/rutilea'
 import { markNativeNotifyBaseline } from '@/store/notify-baseline'
 import { setConnection, setGatewayState } from '@/store/session'
 

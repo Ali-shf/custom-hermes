@@ -12,10 +12,10 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { getRutileaConfigRecord, saveMcpServers } from '@/rutilea'
 import { useI18n } from '@/i18n'
 import { AlertTriangle } from '@/lib/icons'
 import { MCP_DEEPLINK_NAME_RE } from '@/lib/mcp-deeplink'
+import { getRutileaConfigRecord, saveMcpServers } from '@/rutilea'
 import { $mcpInstallRequest } from '@/store/mcp-deeplink-install'
 import { notify, readableError } from '@/store/notifications'
 

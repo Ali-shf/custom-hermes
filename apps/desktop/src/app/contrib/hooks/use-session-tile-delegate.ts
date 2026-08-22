@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-import { getLatestSessionMessages, PROMPT_SUBMIT_REQUEST_TIMEOUT_MS } from '@/rutilea'
 import { toChatMessages } from '@/lib/chat-messages'
+import { getLatestSessionMessages, PROMPT_SUBMIT_REQUEST_TIMEOUT_MS } from '@/rutilea'
 import { publishSessionState, setSessionTileDelegate } from '@/store/session-states'
 import type { SessionResumeResponse } from '@/types/rutilea'
 

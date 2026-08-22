@@ -643,13 +643,13 @@ export { Textarea } from '@/components/ui/textarea'
 export { Tip, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 export type { GatewayEventListener } from '@/contrib/events'
 export type {
-  RutileaPlugin,
   PluginContext,
   PluginContribution,
   PluginNativeNotificationInput,
   PluginOs,
   PluginRestOptions,
-  PluginStorage
+  PluginStorage,
+  RutileaPlugin
 } from '@/contrib/plugin'
 /** Mount-scoped contribution: while the rendering component is mounted, its
  *  children render in the target area's slot; unmount disposes it. Use for
@@ -661,9 +661,6 @@ export { Contribute, type ContributeProps } from '@/contrib/react/contribute'
 // -- contracts ----------------------------------------------------------------
 
 export type { Contribution } from '@/contrib/types'
-/** The live gateway instance type — for typing the `gateway` prop `McpTab`
- *  takes; obtain the instance from `host.getGateway()`. */
-export type { RutileaGateway } from '@/rutilea'
 /** Grab-to-pan for overflow containers (boards, timelines, wide tables) —
  *  the shared scrub primitive; don't hand-roll drag-to-scroll. */
 export { type GrabScroll, useGrabScroll } from '@/hooks/use-grab-scroll'
@@ -710,16 +707,16 @@ export {
   type ReasoningEffort,
   reasoningEffortLabel
 } from '@/lib/reasoning-effort'
-
-export const PANES_AREA = 'panes'
 /** The app's own gateway-readiness evaluation (setup.status +
  *  setup.runtime_check, reconciled) — pass `host.request`. Don't hand-roll
  *  readiness from raw RPC shapes. */
 export { evaluateRuntimeReadiness, type RuntimeReadinessResult } from '@/lib/runtime-readiness'
+
+export const PANES_AREA = 'panes'
+export { coarseElapsed, fmtDateTime, fmtDayTime, relativeTime } from '@/lib/time'
 export const STATUSBAR_AREAS = { left: 'statusBar.left', right: 'statusBar.right' } as const
 export const TITLEBAR_AREAS = { center: 'titleBar.center', left: 'titleBar.left', right: 'titleBar.right' } as const
 
-export { coarseElapsed, fmtDateTime, fmtDayTime, relativeTime } from '@/lib/time'
 /** The transcript as a contribution area: register a named `::directive{...}`
  *  and the model can render your component inline in assistant messages. */
 export {
@@ -728,6 +725,9 @@ export {
   type TranscriptDirectiveProps
 } from '@/lib/transcript-directives'
 export { cn } from '@/lib/utils'
+/** The live gateway instance type — for typing the `gateway` prop `McpTab`
+ *  takes; obtain the instance from `host.getGateway()`. */
+export type { RutileaGateway } from '@/rutilea'
 export { THEMES_AREA } from '@/themes/user-themes'
 export type { RpcEvent, StatusResponse } from '@/types/rutilea'
 /** Subscribe a component to a `host.state` atom. */

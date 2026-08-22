@@ -1,6 +1,6 @@
 import type { RutileaGitWorktree } from '@/global'
-import type { ProjectInfo, SessionInfo } from '@/rutilea'
 import { normalize } from '@/lib/text'
+import type { ProjectInfo, SessionInfo } from '@/rutilea'
 
 import { rankSessions } from '../order'
 

@@ -326,11 +326,14 @@ async function resolveInstallScript({
   //    This is the primary path for packaged builds against private forks
   //    where raw.githubusercontent.com returns 404 without auth.
   const scriptName = installScriptName()
+
   if (process.resourcesPath) {
     const bundled = path.join(process.resourcesPath, scriptName)
+
     try {
       fs.accessSync(bundled, fs.constants.R_OK)
       emit({ type: 'log', line: `[bootstrap] using bundled ${scriptName} at ${bundled}` })
+
       return { path: bundled, source: 'bundled', kind: installScriptKind() }
     } catch {
       // not bundled; fall through to dev/cache/download

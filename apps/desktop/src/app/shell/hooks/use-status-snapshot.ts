@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { getStatus } from '@/rutilea'
 import { evaluateRuntimeReadiness, type RuntimeReadinessResult } from '@/lib/runtime-readiness'
+import { getStatus } from '@/rutilea'
 import type { StatusResponse } from '@/types/rutilea'
 
 // Statusbar health is ambient chrome, not live data — nothing the user acts on

@@ -8,8 +8,8 @@ import {
   attachmentPreviewDataUrl,
   type DroppedFile,
   extractDroppedFiles,
-  RUTILEA_PATHS_MIME,
   partitionDroppedFiles,
+  RUTILEA_PATHS_MIME,
   useComposerActions
 } from './use-composer-actions'
 

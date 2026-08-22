@@ -1,4 +1,4 @@
-import { getGlobalModelOptions, type RutileaGateway, type ModelOptionsResponse } from '@/rutilea'
+import { getGlobalModelOptions, type ModelOptionsResponse, type RutileaGateway } from '@/rutilea'
 import type { ModelOptionProvider } from '@/types/rutilea'
 
 /**

@@ -1,5 +1,5 @@
-import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@rutilea/shared'
 import { useStore } from '@nanostores/react'
+import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@rutilea/shared'
 import { useCallback, useEffect, useRef } from 'react'
 
 import type { RutileaGateway } from '@/rutilea'

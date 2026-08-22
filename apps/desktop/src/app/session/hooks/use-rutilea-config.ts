@@ -1,9 +1,9 @@
 import { type MutableRefObject, useCallback, useRef, useState } from 'react'
 
 import { setTerminalFontFamilyFromConfig } from '@/app/right-sidebar/terminal/terminal-font'
-import { getRutileaConfig, getRutileaConfigDefaults } from '@/rutilea'
 import { BUILTIN_PERSONALITIES, normalizePersonalityValue, personalityNamesFromConfig } from '@/lib/chat-runtime'
 import { normalize } from '@/lib/text'
+import { getRutileaConfig, getRutileaConfigDefaults } from '@/rutilea'
 import { setDisplayTimestampsFromConfig } from '@/store/display-timestamps'
 import {
   getComposerSelectionGeneration,

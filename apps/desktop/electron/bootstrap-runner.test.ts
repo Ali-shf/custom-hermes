@@ -91,7 +91,16 @@ test('fresh bootstrap args include the packaged commit pin', () => {
       activeRoot: '/tmp/rutilea-agent',
       rutileaHome: '/tmp/rutilea'
     }),
-    ['--dir', '/tmp/rutilea-agent', '--rutilea-home', '/tmp/rutilea', '--branch', 'main', '--commit', installStamp.commit]
+    [
+      '--dir',
+      '/tmp/rutilea-agent',
+      '--rutilea-home',
+      '/tmp/rutilea',
+      '--branch',
+      'main',
+      '--commit',
+      installStamp.commit
+    ]
   )
 })
 

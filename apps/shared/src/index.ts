@@ -92,9 +92,9 @@ export {
   GatewayReauthRequiredError,
   type GatewayWsConnection,
   type GatewayWsUrlResult,
-  type RutileaWebSocketUrlOptions,
   isGatewayReauthRequired,
   resolveGatewayWsUrl,
   type ResolveGatewayWsUrlDeps,
+  type RutileaWebSocketUrlOptions,
   type WebSocketAuthParam
 } from './websocket-url'

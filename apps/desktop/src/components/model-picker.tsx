@@ -8,8 +8,8 @@ import { currentPickerSelection } from '@/lib/model-status-label'
 import { normalize } from '@/lib/text'
 import type { ModelOptionProvider, ModelPricing } from '@/types/rutilea'
 
-import type { RutileaGateway } from '../rutilea'
 import { cn } from '../lib/utils'
+import type { RutileaGateway } from '../rutilea'
 import { startManualOnboarding } from '../store/onboarding'
 
 import { InlineNotice } from './notifications'

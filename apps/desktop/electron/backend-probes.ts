@@ -213,9 +213,9 @@ export {
   canImportRutileaCli,
   DEFAULT_PROBE_TIMEOUT_MS,
   execProbeSync,
-  rutileaRuntimeImportProbe,
   PROBE_TIMEOUT_MS,
   resolveProbeTimeoutMs,
+  rutileaRuntimeImportProbe,
   shouldTrustRutileaOverride,
   verifyRutileaCli
 }

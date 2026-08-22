@@ -5,8 +5,8 @@ import { MemoryRouter } from 'react-router'
 import type * as ReactRouterDom from 'react-router'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import type * as RutileaApi from '@/rutilea'
 import { queryClient } from '@/lib/query-client'
+import type * as RutileaApi from '@/rutilea'
 
 const getSkills = vi.fn()
 const getToolsets = vi.fn()

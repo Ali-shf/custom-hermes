@@ -14,7 +14,6 @@ import './kanban.css'
 import {
   cn,
   Codicon,
-  type RutileaPlugin,
   host,
   type KeybindContribution,
   KEYBINDS_AREA,
@@ -22,6 +21,7 @@ import {
   type PaletteContribution,
   type RouteContribution,
   ROUTES_AREA,
+  type RutileaPlugin,
   SIDEBAR_NAV_AREA,
   type SidebarNavContribution,
   STATUSBAR_AREAS,

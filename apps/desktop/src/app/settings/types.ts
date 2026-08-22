@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react'
 
-import type { RutileaGateway } from '@/rutilea'
 import type { IconComponent } from '@/lib/icons'
+import type { RutileaGateway } from '@/rutilea'
 import type { EnvVarInfo } from '@/types/rutilea'
 
 export type SettingsView =

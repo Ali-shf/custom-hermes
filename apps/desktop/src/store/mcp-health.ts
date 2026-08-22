@@ -12,9 +12,9 @@
  * the other just learned.
  */
 
-import { getRutileaConfigRecord, type McpTestResult, testMcpServer } from '@/rutilea'
 import { translateNow } from '@/i18n'
 import { classifyProbe, freshProbe, probeCache, probeKey } from '@/lib/mcp-probe-cache'
+import { getRutileaConfigRecord, type McpTestResult, testMcpServer } from '@/rutilea'
 import { notify } from '@/store/notifications'
 import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
 import { $gatewayState } from '@/store/session'

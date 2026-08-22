@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getRutileaConfigRecord } from '@/rutilea'
 import { queryClient, writeCache } from '@/lib/query-client'
+import { getRutileaConfigRecord } from '@/rutilea'
 import { normalizeProfileKey } from '@/store/profile'
 import type { RutileaConfigRecord } from '@/types/rutilea'
 

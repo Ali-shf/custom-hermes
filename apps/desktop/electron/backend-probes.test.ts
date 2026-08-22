@@ -15,9 +15,9 @@ import { test } from 'vitest'
 import {
   canImportRutileaCli,
   DEFAULT_PROBE_TIMEOUT_MS,
-  rutileaRuntimeImportProbe,
   PROBE_TIMEOUT_MS,
   resolveProbeTimeoutMs,
+  rutileaRuntimeImportProbe,
   shouldTrustRutileaOverride,
   verifyRutileaCli
 } from './backend-probes'

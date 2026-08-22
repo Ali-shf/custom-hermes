@@ -7,10 +7,10 @@ import {
   appendUniquePathEntries,
   buildDesktopBackendEnv,
   buildDesktopBackendPath,
-  rutileaManagedNodePathEntries,
   normalizeRutileaHomeRoot,
   pathEnvKey,
-  POSIX_SANE_PATH_ENTRIES
+  POSIX_SANE_PATH_ENTRIES,
+  rutileaManagedNodePathEntries
 } from './backend-env'
 
 test('desktop backend PATH adds Rutilea-managed bins and missing POSIX sane entries', () => {

@@ -154,8 +154,8 @@ export {
   buildDesktopBackendEnv,
   buildDesktopBackendPath,
   delimiterForPlatform,
-  rutileaManagedNodePathEntries,
   normalizeRutileaHomeRoot,
   pathEnvKey,
-  POSIX_SANE_PATH_ENTRIES
+  POSIX_SANE_PATH_ENTRIES,
+  rutileaManagedNodePathEntries
 }
