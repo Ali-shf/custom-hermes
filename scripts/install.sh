@@ -1566,7 +1566,10 @@ install_deps() {
         done
         if [ "$need_build_tools" = true ]; then
             log_info "Some build tools may be needed for Python packages..."
-            if command -v sudo &> /dev/null; then
+            if [ "$NON_INTERACTIVE" = true ]; then
+                log_warn "Non-interactive mode — skipping build tools (build-essential, python3-dev, libffi-dev)"
+                log_info "Install manually: sudo apt install -y build-essential python3-dev libffi-dev"
+            elif command -v sudo &> /dev/null; then
                 if sudo -n true 2>/dev/null; then
                     sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get install -y -qq build-essential python3-dev libffi-dev >/dev/null 2>&1 || true
                     log_success "Build tools installed"
