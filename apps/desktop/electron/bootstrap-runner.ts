@@ -321,6 +321,22 @@ async function resolveInstallScript({
   emit,
   _download = downloadInstallScript
 }) {
+  // 0. Bundled installer: install.sh / install.ps1 shipped via electron-builder
+  //    extraResources (package.json → "from": "../../scripts/install.sh").
+  //    This is the primary path for packaged builds against private forks
+  //    where raw.githubusercontent.com returns 404 without auth.
+  const scriptName = installScriptName()
+  if (process.resourcesPath) {
+    const bundled = path.join(process.resourcesPath, scriptName)
+    try {
+      fs.accessSync(bundled, fs.constants.R_OK)
+      emit({ type: 'log', line: `[bootstrap] using bundled ${scriptName} at ${bundled}` })
+      return { path: bundled, source: 'bundled', kind: installScriptKind() }
+    } catch {
+      // not bundled; fall through to dev/cache/download
+    }
+  }
+
   // 1. Dev shortcut: prefer a local checkout's installer so we can iterate
   //    without pushing. SOURCE_REPO_ROOT comes from main.ts (path.resolve
   //    of APP_ROOT/../..).
